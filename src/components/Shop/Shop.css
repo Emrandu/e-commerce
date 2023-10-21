@@ -1,4 +1,5 @@
 .shop-container{
+    display: grid;
     grid-template-columns: 5fr 1fr;
 }
 .product-container{
@@ -10,4 +11,7 @@
     padding-left: 20px;
     margin-top: 30px;
     border-radius: 10px;
+}
+.btn-proceed{
+
 }

@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Order.css'
+import { Link, useLoaderData } from 'react-router-dom';
+import ReviewItem from '../ReviewItem/ReviewItem';
+import Cart from '../Cart/Cart';
+import { removeFromDb } from '../../utilities/fakedb';
+
 
 const Order = () => {
+    const savedCart = useLoaderData();
+    console.log(savedCart)
+    const [cart, setCart] = useState(savedCart)
+
+    const handleRemoveFromCart = (id) =>{
+        let remaining = cart.filter(product=>product.id !== id);
+        setCart(remaining)
+        removeFromDb(id)
+        console.log('console from Reviewitem')
+    }
     return (
-        <div>
-            <h2>This is Order Page</h2>
-        </div>
+        <>
+           <div className="shop-container">
+            <div className=''>
+            <div className="review-container">
+                {
+                    cart.map(product=><ReviewItem 
+                    key={product.id}
+                    product = {product}
+                    handleRemoveFromCart={handleRemoveFromCart}
+                    />)
+                }
+            </div>
+            </div>
+            <div className='cart-container'>
+                <Cart 
+                cart = {cart}
+                />
+                <Link to='/checkout'>
+                  <button className='btn-proceed bg-gray-500 text-white p-2 px-4 rounded mb-6'>Proceed CheckOut</button>
+                </Link>
+            </div>
+            </div>   
+        </>
     );
 };
 
