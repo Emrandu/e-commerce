@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 
-const Cart = ({cart}) => {
+const Cart = ({cart,handleClearCart}) => {
     console.log(cart)
     let totalPrice = 0;
     let totalShipping =  0;
@@ -31,7 +31,7 @@ const Cart = ({cart}) => {
             </div> 
             <h1 className='text-yellow-800 font-bold mt-6 text-center text-xl'>Grand Total: $ {total}</h1> 
 
-            <button className='btn-proceed flex items-center bg-gray-500 text-white p-2 px-4 gap-2 rounded mt-4'>Remove Cart  <FontAwesomeIcon icon= {faTrashAlt} /> </button> <br />
+            <button onClick={handleClearCart} className='btn-proceed flex items-center bg-gray-500 text-white p-2 px-4 gap-2 rounded mt-4'>Remove Cart  <FontAwesomeIcon icon= {faTrashAlt} /> </button> <br />
                
         </>
     );

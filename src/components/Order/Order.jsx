@@ -3,7 +3,9 @@ import './Order.css'
 import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/database';
+
+
 
 
 const Order = () => {
@@ -16,6 +18,10 @@ const Order = () => {
         setCart(remaining)
         removeFromDb(id)
         console.log('console from Reviewitem')
+    }
+    const handleClearCart = () =>{
+      setCart([]);
+      deleteShoppingCart()
     }
     return (
         <>
@@ -34,6 +40,7 @@ const Order = () => {
             <div className='cart-container'>
                 <Cart 
                 cart = {cart}
+                handleClearCart={handleClearCart}
                 />
                 <Link to='/checkout'>
                   <button className='btn-proceed bg-gray-500 text-white p-2 px-4 rounded mb-6'>Proceed CheckOut</button>

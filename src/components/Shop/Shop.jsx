@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css'
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb, getShoppingCart} from '../../utilities/database';
+import { addToDb, deleteShoppingCart, getShoppingCart} from '../../utilities/database';
 import { Link } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -35,6 +35,10 @@ const Shop = () => {
         addToDb(product.id)
         
     }
+    const handleClearCart = () =>{
+        setCart([]);
+        deleteShoppingCart();
+    }
     return (
         <>
             <div className="shop-container grid relative">
@@ -53,6 +57,7 @@ const Shop = () => {
                 <div className="cart-container sticky top-0 h-96">
                     <Cart
                     cart = {cart}
+                    handleClearCart={handleClearCart}
                     />
                   <Link to='/orders'>  <button className='btn-proceed bg-gray-500 text-white p-2 px-4 rounded'>Review Order</button></Link>
                 </div>
