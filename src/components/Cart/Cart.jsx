@@ -24,9 +24,9 @@ const Cart = ({cart,handleClearCart}) => {
             </div> 
             <div className='text-white'>
               <h4 className='mb-2'>Selected Items: {totalQuantity }</h4>
-              <h4 className='mb-2'>Total Prize :{totalPrice}</h4>
-              <h4 className='mb-2'>Total Shipping :{totalShipping}</h4>
-              <h4 className='mb-2'>Tax :{tax} </h4>
+              <h4 className='mb-2'>Total Prize : $ {totalPrice}</h4>
+              <h4 className='mb-2'>Total Shipping : $  {totalShipping}</h4>
+              <h4 className='mb-2'>Tax : $ {tax} </h4>
 
             </div> 
             <h1 className='text-yellow-800 font-bold mt-6 text-center text-xl'>Grand Total: $ {total}</h1> 
