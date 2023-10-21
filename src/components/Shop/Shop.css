@@ -1,0 +1,13 @@
+.shop-container{
+    grid-template-columns: 5fr 1fr;
+}
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.cart-container{
+    background-color: cadetblue;
+    padding-left: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
